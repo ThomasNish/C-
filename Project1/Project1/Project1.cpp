@@ -1,39 +1,48 @@
-// File: counter.c
-// 
-// Functions:
-//		main()
-//---------------------------------------------------------------------
-
-
+//-------------------------------------------------------------------------------------------
+//	File: Project1.c
+//
+// Functions: Main
+//
+//-------------------------------------------------------------------------------------------
 #include <stdio.h>
 #include <stdlib.h>
 
-//---------------------------------------------------------------------
-//   Function:    main()
+//-------------------------------------------------------------------------------------------
+//	Function: main
 //
-//   Title:       Calculates Change based off of payment
+// Title: Project1
 //
-//   Description: 
-//                Calculates and displays change
-//
-//   Programmer:  Thomas Nishimura
-//   
-//   Date:        9/27/16
+//	Description: Gets user input and displays correct change
 // 
-//   Version:     1.0
-//  
-//   Environment: Intel Xeon PC 
-//                Software:  OS: MS Windows 10  
-//                Compiles under Microsoft Visual Studio.Net 2015
 //
-//   Input: 	  Amount purchased
-//   Output:      Change tendered
-//
-//   Calls:       
+// Programmer: Thomas Nishimura
 // 
-//   Returns:     EXIT_SUCCESS (successful execution)
+// Date: 9/27/2016
+// Version: 1.0
 //
-// -------------------------------------------------------------------
+//	Environment:
+//                     Hardware: Dell 
+//
+//                      Software: Windows 10, Visual Studios 2015
+//
+//	Input: Amount of payment
+//
+//	Output: Tendered Change
+//
+//	Parameters: void
+// 
+//
+// Returns: success code
+// 
+// 
+//	Called By: n/a
+// 
+//	Calls: n/a
+//
+//	History Log:
+//
+// 
+//----------------------------------------------------------------------------
 int main(void)
 {
 	double amountPurchased = 0;
