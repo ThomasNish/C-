@@ -6,6 +6,7 @@
 //-------------------------------------------------------------------------------------------
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
 //-------------------------------------------------------------------------------------------
 //	Function: main
@@ -46,11 +47,14 @@
 int main(void)
 {
 	double amountPurchased = 0;
+	double amountTendered = 0;
 
-
-	printf("Please enter the total amount of purchase: ");
-	scanf("%d", &amountPurchased);
-	printf("%d", amountPurchased);
-
+	printf("Welcome to Change Counter by Thomas Nishimura\n\n");
+	printf("\tPlease enter the total amount of purchase(in dollars): $");
+	scanf_s("%lf", &amountPurchased);
+	printf("\tPlease enter amount of money tendered: $");
+	scanf_s("%lf", &amountTendered);
+	//printf("%lf\n", amountPurchased);
+	getchar();
 	return EXIT_SUCCESS;
 }
