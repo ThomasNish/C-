@@ -62,15 +62,17 @@ int main(void)
 	double amountTendered = 0.00;
 	double amountofChange = 0.00;
 	
-	long long numofTwenty = 0;
-	long long numofTen = 0;
-	long long numofFive = 0;
-	long long numOne = 0;
+	int numofTwenty = 0;
+	int numofTen = 0;
+	int numofFive = 0;
+	int numOne = 0;
 
-	long long numofQuarter = 0;
-	long long numofDimes = 0;
-	long long numofNickles = 0;
-	long long numofPennies = 0;
+	int numofQuarter = 0;
+	int numofDimes = 0;
+	int numofNickles = 0;
+	int numofPennies = 0;
+
+	int leftovers = 0;
 
 	printf("Welcome to Change Counter by Thomas Nishimura\n\n");
 
@@ -96,7 +98,10 @@ int main(void)
 	printf("\n\t%.2lf", amountofChange);
 	
 	// Doing the calculation of change
-	numofTwenty = (int)amountofChange % CHANGEINTWENTY;
+	numofTwenty = amountofChange / CHANGEINTWENTY;
+	leftovers = (int)amountofChange % CHANGEINTWENTY;
+	numofTen = leftovers / CHANGEINTEN;
+	leftovers %= CHANGEINTEN;
 	
 
 
