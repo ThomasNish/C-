@@ -102,9 +102,36 @@ int main(void)
 	leftovers = (int)amountofChange % CHANGEINTWENTY;
 	numofTen = leftovers / CHANGEINTEN;
 	leftovers %= CHANGEINTEN;
-	
+	numofFive = leftovers / CHANGEINFIVE;
+	leftovers %= CHANGEINFIVE;
+	numOne = leftovers / CHANGEINONE;
+	leftovers %= CHANGEINONE;
+	numofQuarter = leftovers / CHANGEINQUARTERS;
+	leftovers %= CHANGEINQUARTERS;
+	numofDimes = leftovers / CHANGEINDIMES;
+	leftovers %= CHANGEINDIMES;
+	numofNickles = leftovers / CHANGEINNICKLES;
+	leftovers %= CHANGEINNICKLES;
+	numofPennies = leftovers / CHANGEINPENNIES;
+	leftovers %= CHANGEINPENNIES;
+
+	// total should be $36.41
+	printf("\n\t-------------------------------------------");
+
+	printf("\n\tTwenties : %d", numofTwenty);
+	printf("\n\tTens	   : %d", numofTen);
+	printf("\n\tFives	   : %d", numofFive);
+	printf("\n\tOne      : %d", numOne);
+	printf("\n\tQuarters : %d", numofQuarter);
+	printf("\n\tDImes	   : %d", numofDimes);
+	printf("\n\tNickles  : %d", numofNickles);
+	printf("\n\tPennies  : %d", numofPennies);
 
 
+	printf("\n\t-------------------------------------------");
+
+	printf("\nThank you for using Change Counter!");
+	// Keeping the window open
 	getchar();
 	return EXIT_SUCCESS;
 }
