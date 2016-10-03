@@ -1,7 +1,7 @@
 //-------------------------------------------------------------------------------------------
 //	File: Project1.c
 //
-// Functions: Main
+// Functions: Main(), rounding()
 //
 //-------------------------------------------------------------------------------------------
 #include <stdio.h>
@@ -89,48 +89,54 @@ int main(void)
 	printf("\t%.2lf", amountTendered);
 	printf("\n");
 	
+	amountofChange = amountTendered - amountPurchased;
+
 	// Handling if user did not enter enough money
 	if (amountTendered < amountPurchased)
-		printf("You did not enter enough money");
+	{
+		printf("\n\tYou did not enter enough money");
+		printf("\n\tYou still owe $%d", amountofChange);
+	}
 
-
-	amountofChange = amountPurchased - amountTendered;
+	
 	printf("\n\t%.2lf", amountofChange);
 	
+	printf("\n\t-------------------------------------------");
+
 	// Doing the calculation of change
 	numofTwenty = amountofChange / CHANGEINTWENTY;
 	leftovers = (int)amountofChange % CHANGEINTWENTY;
+	printf("\n\tTwenties : %d", numofTwenty);
 	numofTen = leftovers / CHANGEINTEN;
 	leftovers %= CHANGEINTEN;
+	printf("\n\tTens	 : %d", numofTen);
 	numofFive = leftovers / CHANGEINFIVE;
 	leftovers %= CHANGEINFIVE;
+	printf("\n\tFives	 : %d", numofFive);
 	numOne = leftovers / CHANGEINONE;
 	leftovers %= CHANGEINONE;
+	printf("\n\tOne      : %d", numOne);
 	numofQuarter = leftovers / CHANGEINQUARTERS;
 	leftovers %= CHANGEINQUARTERS;
+	printf("\n\tQuarters : %d", numofQuarter);
 	numofDimes = leftovers / CHANGEINDIMES;
 	leftovers %= CHANGEINDIMES;
+	printf("\n\tDImes	 : %d", numofDimes);
 	numofNickles = leftovers / CHANGEINNICKLES;
 	leftovers %= CHANGEINNICKLES;
+	printf("\n\tNickles  : %d", numofNickles);
 	numofPennies = leftovers / CHANGEINPENNIES;
 	leftovers %= CHANGEINPENNIES;
-
-	// total should be $36.41
-	printf("\n\t-------------------------------------------");
-
-	printf("\n\tTwenties : %d", numofTwenty);
-	printf("\n\tTens	   : %d", numofTen);
-	printf("\n\tFives	   : %d", numofFive);
-	printf("\n\tOne      : %d", numOne);
-	printf("\n\tQuarters : %d", numofQuarter);
-	printf("\n\tDImes	   : %d", numofDimes);
-	printf("\n\tNickles  : %d", numofNickles);
 	printf("\n\tPennies  : %d", numofPennies);
+	// total change should be $36.41
+	
+
+	
 
 
 	printf("\n\t-------------------------------------------");
 
-	printf("\nThank you for using Change Counter!");
+	printf("\nThank you for using Change Counter!\n");
 	// Keeping the window open
 	getchar();
 	return EXIT_SUCCESS;
@@ -174,6 +180,5 @@ int main(void)
 //----------------------------------------------------------------------------
 double rounding(int amountgiven)
 {
-	floor(amountgiven * MULTIPLIER + .5);
-	return amountgiven;
+	return floor((amountgiven * MULTIPLIER + .5) / 100.0);
 }
