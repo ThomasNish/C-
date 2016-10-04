@@ -57,20 +57,22 @@ const long long CHANGEINPENNIES = 1;
 int main(void)
 {
 	double rounding(int amountgiven);
+	double correctdecimal(int amount, int decimal);
 
 	double amountPurchased = 0.00;
 	double amountTendered = 0.00;
 	double amountofChange = 0.00;
-	
-	int numofTwenty = 0;
-	int numofTen = 0;
-	int numofFive = 0;
-	int numOne = 0;
+	double amountofChangeinCents = 0.00;
 
-	int numofQuarter = 0;
-	int numofDimes = 0;
-	int numofNickles = 0;
-	int numofPennies = 0;
+	long numofTwenty = 0;
+	long numofTen = 0;
+	long numofFive = 0;
+	long numOne = 0;
+
+	long numofQuarter = 0;
+	long numofDimes = 0;
+	long numofNickles = 0;
+	long numofPennies = 0;
 
 	int leftovers = 0;
 
@@ -86,16 +88,15 @@ int main(void)
 	printf("\n\tPlease enter amount of money tendered: $");
 	scanf_s("%lf", &amountTendered);
 	amountTendered = rounding(amountTendered);
-	printf("\t%.2lf", amountTendered);
-	printf("\n");
+	printf("\t%.2lf\n", amountTendered);
 	
-	amountofChange = amountTendered - amountPurchased;
+	amountofChange = (long)(amountTendered - amountPurchased);
 
 	// Handling if user did not enter enough money
 	if (amountTendered < amountPurchased)
 	{
 		printf("\n\tYou did not enter enough money");
-		printf("\n\tYou still owe $%d", amountofChange);
+		printf("\n\tYou still owe $%lf", amountofChange);
 	}
 
 	
@@ -176,9 +177,11 @@ int main(void)
 //
 //	History Log:
 //
-// 
+//					9/26/16 tn1				created version 1.0 
 //----------------------------------------------------------------------------
 double rounding(int amountgiven)
 {
 	return floor((amountgiven * MULTIPLIER + .5) / 100.0);
 }
+
+
