@@ -8,6 +8,7 @@
 #include <stdlib.h>
 #include <math.h>
 
+//Declaring my constants
 const double MULTIPLIER = 100.0;
 const long long CHANGEINTWENTY = 2000;
 const long long CHANGEINTEN = 1000;
@@ -18,6 +19,9 @@ const long long CHANGEINQUARTERS = 25;
 const long long CHANGEINDIMES = 10;
 const long long CHANGEINNICKLES = 5;
 const long long CHANGEINPENNIES = 1;
+
+// Initilizing my function
+double rounding(double amountgiven);
 //----------------------------------------------------------------------------
 //	Function: main
 //
@@ -34,7 +38,7 @@ const long long CHANGEINPENNIES = 1;
 //	Environment:
 //                     Hardware: Dell 
 //
-//                      Software: Windows 10, Visual Studios 2015
+//                     Software: Windows 10, Visual Studios 2015
 //
 //	Input: Amount of payment
 //
@@ -56,23 +60,24 @@ const long long CHANGEINPENNIES = 1;
 //----------------------------------------------------------------------------
 int main(void)
 {
-	double rounding(int amountgiven);
-	double correctdecimal(int amount, int decimal);
+	
+	//double correctdecimal(int amount, int decimal);
 
 	double amountPurchased = 0.00;
 	double amountTendered = 0.00;
 	double amountofChange = 0.00;
 	double amountofChangeinCents = 0.00;
+	double ABSofChange = 0.00;
 
-	long numofTwenty = 0;
-	long numofTen = 0;
-	long numofFive = 0;
-	long numOne = 0;
+	int numofTwenty = 0;
+	int numofTen = 0;
+	int numofFive = 0;
+	int numOne = 0;
 
-	long numofQuarter = 0;
-	long numofDimes = 0;
-	long numofNickles = 0;
-	long numofPennies = 0;
+	int numofQuarter = 0;
+	int numofDimes = 0;
+	int numofNickles = 0;
+	int numofPennies = 0;
 
 	int leftovers = 0;
 
@@ -82,6 +87,7 @@ int main(void)
 	printf("\tPlease enter the total amount of purchase(in dollars): $");
 	scanf_s("%lf", &amountPurchased);
 	amountPurchased = rounding(amountPurchased);
+	//amountPurchased = (((amountPurchased * MULTIPLIER) + 0.5) / MULTIPLIER);
 	printf("\t%.2lf", amountPurchased);
 
 	// Getting user input for amount of money paid
@@ -89,51 +95,56 @@ int main(void)
 	scanf_s("%lf", &amountTendered);
 	amountTendered = rounding(amountTendered);
 	printf("\t%.2lf\n", amountTendered);
+	amountofChange = (amountTendered - amountPurchased);
 	
-	amountofChange = (long)(amountTendered - amountPurchased);
-
+	ABSofChange = fabs(amountofChange);
 	// Handling if user did not enter enough money
 	if (amountTendered < amountPurchased)
 	{
-		printf("\n\tYou did not enter enough money");
-		printf("\n\tYou still owe $%lf", amountofChange);
+		printf("\n\tYou did not enter enough money.");
+		printf("\n\tYou still owe $%.2lf\n", ABSofChange);
+		return 0;
 	}
 
 	
-	printf("\n\t%.2lf", amountofChange);
-	
+	printf("\n\t%.2lf", ABSofChange);
+	amountofChangeinCents = amountofChange * 100;
 	printf("\n\t-------------------------------------------");
 
 	// Doing the calculation of change
-	numofTwenty = amountofChange / CHANGEINTWENTY;
-	leftovers = (int)amountofChange % CHANGEINTWENTY;
+	numofTwenty = amountofChangeinCents / CHANGEINTWENTY;
+	leftovers = (int)amountofChangeinCents % CHANGEINTWENTY;
 	printf("\n\tTwenties : %d", numofTwenty);
+
 	numofTen = leftovers / CHANGEINTEN;
 	leftovers %= CHANGEINTEN;
 	printf("\n\tTens	 : %d", numofTen);
+
 	numofFive = leftovers / CHANGEINFIVE;
 	leftovers %= CHANGEINFIVE;
 	printf("\n\tFives	 : %d", numofFive);
+
 	numOne = leftovers / CHANGEINONE;
 	leftovers %= CHANGEINONE;
 	printf("\n\tOne      : %d", numOne);
+
 	numofQuarter = leftovers / CHANGEINQUARTERS;
 	leftovers %= CHANGEINQUARTERS;
 	printf("\n\tQuarters : %d", numofQuarter);
+
 	numofDimes = leftovers / CHANGEINDIMES;
 	leftovers %= CHANGEINDIMES;
 	printf("\n\tDImes	 : %d", numofDimes);
+
 	numofNickles = leftovers / CHANGEINNICKLES;
 	leftovers %= CHANGEINNICKLES;
 	printf("\n\tNickles  : %d", numofNickles);
+
 	numofPennies = leftovers / CHANGEINPENNIES;
 	leftovers %= CHANGEINPENNIES;
 	printf("\n\tPennies  : %d", numofPennies);
 	// total change should be $36.41
 	
-
-	
-
 
 	printf("\n\t-------------------------------------------");
 
@@ -168,7 +179,7 @@ int main(void)
 //	Parameters: int amountgiven
 // 
 //
-// Returns: amount given
+// Returns: double amountgiven
 // 
 // 
 //	Called By: main()
@@ -179,9 +190,9 @@ int main(void)
 //
 //					9/26/16 tn1				created version 1.0 
 //----------------------------------------------------------------------------
-double rounding(int amountgiven)
+double rounding(double amountgiven)
 {
-	return floor((amountgiven * MULTIPLIER + .5) / 100.0);
+	return floor((amountgiven * MULTIPLIER) + 0.5) / (MULTIPLIER);
 }
 
 
