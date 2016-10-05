@@ -67,6 +67,8 @@ int main(void)
 	double amountTendered = 0.00;
 	double amountofChange = 0.00;
 	double amountofChangeinCents = 0.00;
+	double amounfofChangeDue = 0.00;
+	double amountofChangeDueinCents = 0.00;
 	double ABSofChange = 0.00;
 
 	int numofTwenty = 0;
@@ -96,19 +98,53 @@ int main(void)
 	amountTendered = rounding(amountTendered);
 	printf("\t%.2lf\n", amountTendered);
 	amountofChange = (amountTendered - amountPurchased);
-	
+
+	amounfofChangeDue = fabs(amountTendered - amountPurchased);
+	amountofChangeDueinCents = amounfofChangeDue * 100 + .5;
 	ABSofChange = fabs(amountofChange);
 	// Handling if user did not enter enough money
 	if (amountTendered < amountPurchased)
 	{
 		printf("\n\tYou did not enter enough money.");
 		printf("\n\tYou still owe $%.2lf\n", ABSofChange);
+
+		numofTwenty = amountofChangeDueinCents / CHANGEINTWENTY;
+		leftovers = (int)amountofChangeDueinCents % CHANGEINTWENTY;
+		printf("\n\tTwenties : %d", numofTwenty);
+
+		numofTen = leftovers / CHANGEINTEN;
+		leftovers %= CHANGEINTEN;
+		printf("\n\tTens	 : %d", numofTen);
+
+		numofFive = leftovers / CHANGEINFIVE;
+		leftovers %= CHANGEINFIVE;
+		printf("\n\tFives	 : %d", numofFive);
+
+		numOne = leftovers / CHANGEINONE;
+		leftovers %= CHANGEINONE;
+		printf("\n\tOne      : %d", numOne);
+
+		numofQuarter = leftovers / CHANGEINQUARTERS;
+		leftovers %= CHANGEINQUARTERS;
+		printf("\n\tQuarters : %d", numofQuarter);
+
+		numofDimes = leftovers / CHANGEINDIMES;
+		leftovers %= CHANGEINDIMES;
+		printf("\n\tDImes	 : %d", numofDimes);
+
+		numofNickles = leftovers / CHANGEINNICKLES;
+		leftovers %= CHANGEINNICKLES;
+		printf("\n\tNickles  : %d", numofNickles);
+
+		numofPennies = leftovers / CHANGEINPENNIES;
+		leftovers %= CHANGEINPENNIES;
+		printf("\n\tPennies  : %d\n", numofPennies);
 		return 0;
 	}
 
 	
 	printf("\n\t%.2lf", ABSofChange);
-	amountofChangeinCents = amountofChange * 100;
+	amountofChangeinCents = amountofChange * 100 + .5;
 	printf("\n\t-------------------------------------------");
 
 	// Doing the calculation of change
