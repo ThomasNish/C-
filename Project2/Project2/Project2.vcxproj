@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="C:\Users\955317100\Downloads\argcv.c" />
+    <ClCompile Include="C:\Users\955317100\Downloads\standarddeviation.c" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{E81DED1F-3173-4943-B2CD-79B886877C06}</ProjectGuid>
